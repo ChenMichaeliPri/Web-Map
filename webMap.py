@@ -16,10 +16,25 @@ restLats = list(restaurantsData["LAT"])
 restLons = list(restaurantsData["LON"])
 restLink = list(restaurantsData["LINK"])
 
-barsNames = list(restaurantsData["BARS"])
-barsLats = list(restaurantsData["LAT"])
-barsLons = list(restaurantsData["LON"])
-barsLink = list(restaurantsData["LINK"])
+barsNames = list(barsData["BARS"])
+barsLats = list(barsData["LAT"])
+barsLons = list(barsData["LON"])
+barsLink = list(barsData["LINK"])
+
+# Adding layers to the Map
+fgRest = folium.FeatureGroup(name="Restaurants")
+
+for rest, lt, ln in zip(restNames, restLats, restLons):
+    fgRest.add_child(folium.Marker(location=[lt, ln], popup=rest, icon=folium.Icon(color='purple')))
+
+webMap.add_child(fgRest)
+
+fgBars = folium.FeatureGroup(name="Bars")
+
+for bar, lt, ln in zip(barsNames, barsLats, barsLons):
+    fgBars.add_child(folium.Marker(location=[lt, ln], popup=bar, icon=folium.Icon(color='orange')))
+
+webMap.add_child(fgBars)
 
 # Saving as html file
 webMap.save("webMap.html")
