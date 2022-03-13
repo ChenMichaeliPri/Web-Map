@@ -24,15 +24,15 @@ barsLink = list(barsData["LINK"])
 # Adding layers to the Map
 fgRest = folium.FeatureGroup(name="Restaurants")
 
-for rest, lt, ln in zip(restNames, restLats, restLons):
-    fgRest.add_child(folium.Marker(location=[lt, ln], popup=rest, icon=folium.Icon(color='purple')))
+for rest, lt, ln, link in zip(restNames, restLats, restLons, restLink):
+    fgRest.add_child(folium.Marker(location=[lt, ln], popup=("<a href="+link+">"+rest+" </a>"), tooltip=rest, icon=folium.Icon(color='purple')))
 
 webMap.add_child(fgRest)
 
 fgBars = folium.FeatureGroup(name="Bars")
 
-for bar, lt, ln in zip(barsNames, barsLats, barsLons):
-    fgBars.add_child(folium.Marker(location=[lt, ln], popup=bar, icon=folium.Icon(color='orange')))
+for bar, lt, ln, link in zip(barsNames, barsLats, barsLons, barsLink):
+    fgBars.add_child(folium.Marker(location=[lt, ln], popup=("<a href="+link+">"+bar+"</a>"), tooltip=bar, icon=folium.Icon(color='orange')))
 
 webMap.add_child(fgBars)
 
