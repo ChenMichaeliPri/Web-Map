@@ -36,5 +36,8 @@ for bar, lt, ln, link in zip(barsNames, barsLats, barsLons, barsLink):
 
 webMap.add_child(fgBars)
 
+# Adding layer control
+webMap.add_child(folium.LayerControl())
+
 # Saving as html file
 webMap.save("webMap.html")
