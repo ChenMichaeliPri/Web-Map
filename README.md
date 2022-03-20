@@ -1,5 +1,6 @@
 # Web Map
 A Web-Map of loved restaurants and bars in Tel Aviv - I hope you'll enjoy it.
+
 Direct link - http://chenmichaeli.pythonanywhere.com/
 
 Packages used - Folium, Pandas.
